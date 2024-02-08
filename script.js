@@ -104,7 +104,9 @@ function nextQuestion() {
 let start = "20";
 function startTime() {
     let countDisplay = document.querySelector('.count');
-
+ if (timer) {
+        clearInterval(timer); // Clear any existing interval
+    }
     // Start the countdown timer and store the interval ID in a variable
     let timer = setInterval(() => {
         if (countDisplay.textContent === "0") {
