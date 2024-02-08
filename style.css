@@ -202,10 +202,5 @@ footer a {
   .btn {
     width: 98%;
   }
-   .start-next-btn {
-    position: absolute;
-    top: 67%;
-    left: 50%;
-    width: 0;
-  }
+   
 }
