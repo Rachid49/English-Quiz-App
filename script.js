@@ -102,13 +102,15 @@ function nextQuestion() {
     }
 }
 let start = "20";
+let timer;
 function startTime() {
     let countDisplay = document.querySelector('.count');
- if (timer) {
-        clearInterval(timer); // Clear any existing interval
+    if (timer) {
+        clearInterval(timer);
     }
     // Start the countdown timer and store the interval ID in a variable
-    let timer = setInterval(() => {
+    timer = setInterval(() => {
+
         if (countDisplay.textContent === "0") {
             clearInterval(timer); // Clear the interval
             nextQuestion();
@@ -122,6 +124,7 @@ function startTime() {
         }
     }, 1000);
 }
+
 
 
 function resetColors() {
