@@ -204,4 +204,11 @@ footer a {
    .start-next-btn{
      flex-wrap:wrap;
    }
+  .start-next-btn {
+    position: relative;
+  }
+  .restart-btn {
+    position: absolute;
+    top: 120%;
+  }
 }
