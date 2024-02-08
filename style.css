@@ -207,5 +207,6 @@ footer a {
   .restart-btn {
     position: absolute;
     top: 120%;
+    margin-top:45px;
   }
 }
