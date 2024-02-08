@@ -201,5 +201,7 @@ footer a {
   .btn {
     width: 98%;
   }
-   
+   .start-next-btn{
+     flex-wrap:wrap;
+   }
 }
