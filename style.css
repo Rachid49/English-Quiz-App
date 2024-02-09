@@ -200,13 +200,4 @@ footer a {
   .btn {
     width: 98%;
   }
-
-  .start-next-btn {
-    position: relative;
-  }
-  .restart-btn {
-    position: absolute;
-    top: 120%;
-    margin-top:45px;
-  }
 }
