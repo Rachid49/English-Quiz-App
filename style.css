@@ -7,14 +7,12 @@
 body {
   background-color: #ffffff;
 }
-
 nav {
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 0.5rem;
 }
-
 nav ul {
   display: flex;
   gap: 1.5rem;

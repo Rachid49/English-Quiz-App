@@ -126,6 +126,7 @@ function startTime() {
 }
 
 
+
 function resetColors() {
     answerButtons.querySelectorAll('button').forEach(btn => {
         btn.style.backgroundColor = '';
