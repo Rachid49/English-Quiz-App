@@ -202,6 +202,7 @@ footer a {
   }
   .statistiques {
     display: flex;
+    justify-content: center;
     width: 100%;
   }
   .statistiques div:nth-child(1) {
