@@ -272,7 +272,7 @@ footer a {
   nav .nav-links {
     transform: translateX(100%);
     position: absolute;
-    background-color: #00ffc3;
+    background-color: black;
     width: 40%;
     height: 70vh;
     top: 43px;
