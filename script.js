@@ -1,8 +1,121 @@
-import quizData from './quizeData.js';
+let navLinks = document.querySelector('.nav-links');
+let burgerMenu = document.querySelector('.burger-menu');
+let spans = burgerMenu.querySelectorAll('span');
+document.addEventListener('click', (e) => {
+    if (e.target === burgerMenu || Array.from(spans).includes(e.target)) {
+        navLinks.classList.toggle('active');
+        spans.forEach(span => {
+            span.classList.toggle('span-active')
+        });
+    }
+    else {
+        navLinks.classList.remove('active');
+        spans.forEach(span => {
+            span.classList.remove('span-active')
+        });
+    }
+})
 
-let lengthDisplay = document.querySelector('.length').textContent = quizData.length;
+document.querySelectorAll('.soon').forEach(btn => {
+    btn.onclick = () => {
+        message.textContent = 'COMMING SOON!!';
+    }
+});
+
+let quizData;
+let lengthDisplay = document.querySelector('.length');
+// Define a function to import and process the quiz data
+function importQuizData(fileName) {
+    // Import the quiz data file based on the fileName parameter
+    import(`./${fileName}.js`).then((module) => {
+        // Access the exported data from the module and store it in the global variable
+        quizData = module.default;
+        // Reset currentQuestionIndex to 0
+        currentQuestionIndex = 0;
+        // You can now use the quizData variable anywhere in your code
+        startBtn.style.display = 'block';
+
+        // Access the length of quizData and update the lengthDisplay
+        if (lengthDisplay) {
+            lengthDisplay.textContent = quizData.length;
+        } else {
+            console.error('Length display element not found.');
+        }
+    }).catch((error) => {
+        console.error(`Error importing quiz data from ${fileName}.js:`, error);
+    });
+}
+
+let alertMsj = document.querySelector('.alert');
+let messageAlert = alertMsj.querySelector('p span')
+let Ok = document.querySelector('.ok');
+let cancel = document.querySelector('.cancel');
+
+// Add event listeners to trigger importQuizData function when links are clicked
+document.querySelector('#grammar').addEventListener('click', () => {
+    clearInterval(timer);
+    messageAlert.textContent = 'Grammar';
+    alertMsj.style.display = 'flex';
+    if (countDisplay.textContent < start) {
+        document.querySelector('.alertText').textContent = 'Are you sure you want to leave this quiz?';
+        cancel.textContent = 'Continue';
+    }
+    Ok.onclick = function () {
+        startBtn.disabled = false;
+        stopQuiz();
+        countDisplay.textContent = start;
+        message.textContent = '';
+        restartBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        importQuizData('grammar-quizeData');
+        alertMsj.style.display = 'none';
+        questionContainer.innerHTML = 'Welcome to the Grammar Quiz <span>Click Start to start the Quiz.</span>';
+    };
+    cancel.onclick = function () {
+        if (cancel.textContent === 'Continue') {
+            startTime();
+            alertMsj.style.display = 'none';
+        } else {
+            alertMsj.style.display = 'none';
+        }
+    };
+});
+
+document.querySelector('#spoken').addEventListener('click', () => {
+    clearInterval(timer);
+    messageAlert.textContent = 'Spoken';
+    alertMsj.style.display = 'flex';
+
+    if (countDisplay.textContent < start) {
+        document.querySelector('.alertText').innerHTML = 'Are you sure you want to leave this quiz?';
+        cancel.textContent = 'Continue';
+    }
+
+
+    Ok.onclick = function () {
+        startBtn.disabled = false;
+        stopQuiz();
+        countDisplay.textContent = start;
+        message.textContent = '';
+        restartBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        importQuizData('spoken-quizeData');
+        alertMsj.style.display = 'none';
+        questionContainer.innerHTML = 'Welcome to the Spoken Quiz <span>Click Start to start the Quiz.</span>';
+    };
+    cancel.onclick = function () {
+        if (cancel.textContent === 'Continue') {
+            startTime();
+            alertMsj.style.display = 'none';
+        } else {
+            alertMsj.style.display = 'none';
+        }
+    };
+});
+
+
+
 let currentQuestionIndex = 0;
-
 const questionContainer = document.getElementById('question-container');
 const answerButtons = document.getElementById('answer-buttons');
 let score = 0;
@@ -33,21 +146,20 @@ function checkAnswer(button, selectedAnswer) {
     } else {
         button.style.backgroundColor = 'red';
     }
-
     // Disable all buttons after an answer is selected
     answerButtons.querySelectorAll('button').forEach(btn => {
         btn.disabled = true;
     });
     if (selectedAnswer) {
         checkClick();
-    }
+    };
     showCorrectAnswer();
-}
+};
 function checkClick() {
     answerButtons.querySelectorAll('button').forEach(btn => {
         btn.setAttribute('clicked', 'yes');
-    })
-}
+    });
+};
 
 
 function showCorrectAnswer() {
@@ -59,9 +171,9 @@ function showCorrectAnswer() {
     });
 }
 let restartBtn = document.querySelector('.restart-btn');
+let message = document.querySelector('.message');
 restartBtn.style.display = 'none';
 function resetQuiz() {
-    let message = document.querySelector('.message');
     let scoreDisplay = document.querySelector('.score');
     let countDisplay = document.querySelector('.count');
     let lengthDisplay = document.querySelector('.length');
@@ -99,26 +211,34 @@ function nextQuestion() {
         scoreDisplay.textContent = score;
         restartBtn.style.display = 'block';
         nextBtn.disabled = true;
+        startBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
     }
 }
 let start = "20";
 let timer;
+let countDisplay = document.querySelector('.count');
+
 function startTime() {
-    let countDisplay = document.querySelector('.count');
     if (timer) {
         clearInterval(timer);
     }
-    // Start the countdown timer and store the interval ID in a variable
+    // Check if quizData is undefined before accessing its length property
+    if (quizData === undefined) {
+        // Handle the case where quizData is undefined
+        console.error('Quiz data is not loaded yet.');
+        return;
+    }
     timer = setInterval(() => {
 
         if (countDisplay.textContent === "0") {
-            clearInterval(timer); // Clear the interval
+            clearInterval(timer);
             nextQuestion();
             countDisplay.textContent = start;
         } else if (currentQuestionIndex >= quizData.length) {
-            clearInterval(timer); // Clear the interval
+            clearInterval(timer);
         } else if (answerButtons.querySelector('button').hasAttribute("clicked", "yes")) {
-            clearInterval(timer); // Clear the interval
+            clearInterval(timer);
         } else {
             countDisplay.textContent--;
         }
@@ -138,19 +258,25 @@ let startBtn = document.querySelector('.start-btn');
 let nextBtn = document.getElementById('next-button');
 
 nextBtn.style.display = 'none';
-startBtn.disabled = false;
+startBtn.style.display = 'none';
 nextBtn.disabled = true;
 function startQuiz() {
     nextBtn.disabled = false;
     startBtn.disabled = true;
     nextBtn.style.display = 'block';
-
     startTime();
     showQuestion();
     restartBtn.style.display = 'none';
 
-}
+};
 
+function stopQuiz() {
+    answerButtons.querySelectorAll('button').forEach(btn => {
+        btn.textContent = '......';
+        btn.style.backgroundColor = '';
+    });
+
+}
 startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', resetQuiz);

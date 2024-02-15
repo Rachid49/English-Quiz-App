@@ -14,19 +14,49 @@
           <li>Grammar</li>
           <li>Spoken</li>
           <li>Paragraph</li>
-          <li>guided</li>
-          <li>comprehention</li>
+          <li>Guided</li>
+          <li>Comprehention</li>
         </ul>
+      </div>
+      <div class="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </nav>
 
     <div class="main-container">
+      <ol>
+        <li id="grammar">Grammar</li>
+        <li id="spoken">Spoken</li>
+        <li style="text-decoration: line-through #000000" class="soon">
+          Paragraph
+        </li>
+        <li style="text-decoration: line-through #000000" class="soon">
+          gclassed
+        </li>
+        <li style="text-decoration: line-through #000000" class="soon">
+          comprehention
+        </li>
+      </ol>
+      <!-- alert message -->
+      <div class="alert">
+        <div class="content">
+          <p class="alertText">
+            do you want to start <span>Spoken</span> quiz?
+          </p>
+          <div class="btns">
+            <button class="ok">Yes</button>
+            <button class="cancel">Cencel</button>
+          </div>
+        </div>
+      </div>
       <div id="quiz-container">
         <div id="question-container">
           <h2>
             Welcome to the English Quiz App. This test does not represent your
             level of English. I made this application for educational purposes
-            only. <span>Click Start to start the Quiz.</span>
+            only. <span>Choose from the list what quiz you want to start.</span>
           </h2>
         </div>
         <div id="answer-buttons" class="btn-container">
@@ -39,6 +69,7 @@
           <button class="start-btn">Start</button>
           <button id="next-button" class="next">Next</button>
           <button class="restart-btn">Restart</button>
+          <!-- <button class="startunit">start unit</button> -->
         </div>
 
         <h3 class="message"></h3>
@@ -50,7 +81,7 @@
         </div>
         <div class="">
           Total Questions Left:
-          <h3 class="length">kn</h3>
+          <h3 class="length">0</h3>
         </div>
         <div>
           Final Score:
