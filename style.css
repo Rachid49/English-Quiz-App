@@ -130,6 +130,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-content: flex-end;
   gap: 1rem;
 }
 
@@ -168,7 +169,6 @@ p {
   width: 70%;
   font-size: large;
   font-family: Doulos SIL;
-  
 }
 
 .btn:hover {
