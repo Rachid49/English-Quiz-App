@@ -220,6 +220,9 @@ let timer;
 let countDisplay = document.querySelector('.count');
 
 function startTime() {
+    document.querySelector('.statistiques').style.opacity = "1";
+    document.getElementById('main-container').classList.add('mainPhone');
+    questionContainer.style.backgroundColor = 'transparent';
     if (timer) {
         clearInterval(timer);
     }
@@ -263,11 +266,13 @@ nextBtn.disabled = true;
 function startQuiz() {
     nextBtn.disabled = false;
     startBtn.disabled = true;
+    startBtn.style.display = 'none';
     nextBtn.style.display = 'block';
     startTime();
     showQuestion();
     restartBtn.style.display = 'none';
-
+    answerButtons.style.display = 'flex';
+    document.getElementById('quiz-container').style.justifyContent = 'space-evenly'
 };
 
 function stopQuiz() {
@@ -280,3 +285,9 @@ function stopQuiz() {
 startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', resetQuiz);
+
+
+
+const answerButtonsDiv = document.querySelector('button');
+answerButtons.style.display = 'none';
+

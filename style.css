@@ -6,7 +6,6 @@
 }
 body {
   background-color: #ffffff;
-  /* overflow: hidden; */
 }
 nav {
   display: flex;
@@ -32,7 +31,7 @@ nav ul li {
 .Notice-text {
   width: 50%;
   text-transform: capitalize;
-  padding: 0.5rem;
+  padding: 0.2rem;
   font-weight: bold;
 }
 .Notice-text h1 {
@@ -55,10 +54,21 @@ p {
   margin: auto;
   border-radius: 8px;
   height: 70vh;
-  background-color: #0c18b7;
   position: relative;
+  background: url(library3.jpg) no-repeat 23% center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-
+.mainPhone {
+  background: linear-gradient(to right, #000000cc, #000000cc),
+    url(library3.jpg) no-repeat 23% center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .main-container ol li {
   color: white;
   list-style: none;
@@ -118,25 +128,27 @@ p {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 #question-container {
   font-family: monospace;
-  font-size: 20px;
+  font-size: 25px;
   color: rgb(255, 255, 255);
   text-align: center;
   font-weight: bold;
+  width: 98%;
+  background-color: #0000007a;
 }
 #question-container h2 {
   color: rgb(255, 255, 255);
-  font-size: large;
+  font-size: 20px;
 }
 #question-container h2 span,
 #question-container span {
-  font-size: 20px;
-  color: orangered;
+  color: yellow;
 }
 .btn-container {
   display: flex;
@@ -168,7 +180,7 @@ p {
   width: 40%;
 }
 .start-next-btn * {
-  background-color: #303030;
+  background-color: #307a64;
   color: #fff;
   border: none;
   padding: 10px 30px;
@@ -187,7 +199,7 @@ p {
   background-color: #00ffc3;
 }
 .start-next-btn .next:hover {
-  background-color: #60615f;
+  background-color: #3d8d75;
 }
 .start-next-btn .start-btn:hover {
   background-color: #03cc9d;
@@ -198,13 +210,15 @@ p {
 .statistiques {
   background-color: #1f8fff;
   border-radius: 8px;
-  box-shadow: inset 0 0 4px black;
+  box-shadow: 0 0 2px black;
 }
+
 .statistiques div {
   margin: 40px;
   font-size: 20px;
   color: #ffffff;
 }
+
 .count,
 .length,
 .score {
@@ -351,38 +365,38 @@ footer a {
   .main-container ol {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     gap: 0.2rem;
     width: 100%;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    /* background-color: white; */
   }
   .main-container ol li {
     margin: 0;
     font-size: medium;
-    padding: 3px;
+    padding: 8px 10px;
   }
   #quiz-container {
     width: 100%;
     box-shadow: 0 0 0px;
   }
 
-  #question-container {
-    padding-top: 2rem;
+  .btn {
+    width: 98%;
   }
 
+  .statistiques {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    opacity: 0;
+  }
   .statistiques div {
     font-size: 15px;
     text-align: center;
     padding: 1rem;
     margin: 0;
-  }
-  .btn {
-    width: 98%;
-  }
-  .statistiques {
-    display: flex;
-    justify-content: center;
-    width: 100%;
   }
   .statistiques div:nth-child(1) {
     background-color: rgb(0, 0, 0);
