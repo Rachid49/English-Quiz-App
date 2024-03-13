@@ -167,6 +167,8 @@ p {
   cursor: pointer;
   width: 70%;
   font-size: large;
+  font-family: Doulos SIL;
+  
 }
 
 .btn:hover {
